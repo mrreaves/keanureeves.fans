@@ -14,30 +14,8 @@
       color: #fff;
     }
 
-    #fan-marquee {
-      background: #000;
-      color: #00ffe7;
-      overflow: hidden;
-      white-space: nowrap;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.95rem;
-      padding: 0.6rem 0;
-      border-top: 2px solid #00ffe7;
-      border-bottom: 2px solid #00ffe7;
-    }
-
-    #marquee-content {
-      display: inline-block;
-      animation: scroll 25s linear infinite;
-    }
-
-    @keyframes scroll {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-
     header {
-      padding: 4rem 2rem;
+      padding: 4rem 2rem 2rem 2rem;
       text-align: center;
       background: linear-gradient(to bottom, #000, #111);
     }
@@ -51,6 +29,19 @@
     header p {
       font-size: 1.1rem;
       color: #aaa;
+      margin-bottom: 1.5rem;
+    }
+
+    .countdown {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      background-color: #111;
+      display: inline-block;
+      padding: 1rem 2rem;
+      border: 2px solid #00ffe7;
+      border-radius: 10px;
+      color: #00ffe7;
+      margin-bottom: 2rem;
     }
 
     .card-container {
@@ -152,14 +143,12 @@
 </head>
 <body>
 
-  <!-- 🔥 Scrolling Registration Marquee -->
-  <div id="fan-marquee">
-    <div id="marquee-content"></div>
-  </div>
-
   <header>
     <h1>Keanu Reeves Fan Membership</h1>
     <p>Choose your level of dedication and unlock exclusive rewards and lifetime access to Keanu experiences.</p>
+    <div class="countdown" id="countdown">
+      Registration closes in: <span id="timer">Loading...</span>
+    </div>
   </header>
 
   <section class="card-container">
@@ -197,36 +186,29 @@
   </footer>
 
   <script>
-    const levels = ["Silver", "Gold", "Platinum", "Lifetime"];
-    const marquee = document.getElementById("marquee-content");
+    // Set countdown target to 20 days from today
+    const now = new Date();
+    const deadline = new Date(now.getTime() + 20 * 24 * 60 * 60 * 1000);
 
-    const names = [
-      "Jasmine L.", "Marco R.", "Amara K.", "Leo M.", "Grace T.", "Omar S.",
-      "Zoe D.", "Theo J.", "Kira B.", "Devon N.", "Hassan E.", "Nina W.",
-      "Elena V.", "Ryan B.", "Amina C.", "Max T.", "Tariq H.", "Isla G."
-    ];
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = deadline - now;
 
-    function randomLevel() {
-      const weighted = ["Silver", "Gold", "Platinum", "Lifetime", "Lifetime"];
-      return weighted[Math.floor(Math.random() * weighted.length)];
+      if (distance < 0) {
+        document.getElementById("timer").innerHTML = "Registration Closed";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
-    function randomName() {
-      return names[Math.floor(Math.random() * names.length)];
-    }
-
-    function addFanRegistration() {
-      const name = randomName();
-      const level = randomLevel();
-      const entry = `🎉 ${name} just joined as a ${level} Member! &nbsp;&nbsp;&nbsp;`;
-      marquee.innerHTML += entry;
-    }
-
-    for (let i = 0; i < 10; i++) {
-      addFanRegistration();
-    }
-
-    setInterval(addFanRegistration, 6000);
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   </script>
 
 </body>
