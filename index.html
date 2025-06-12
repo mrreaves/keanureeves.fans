@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Keanu Reeves Fan Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0c0c0c;
+      font-family: 'Roboto', sans-serif;
+      color: #fff;
+    }
+
+    header {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: linear-gradient(to bottom, #000, #111);
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #aaa;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 3rem 1rem;
+      gap: 2rem;
+    }
+
+    .membership-card {
+      width: 280px;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+
+    .membership-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    }
+
+    .card-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      font-weight: bold;
+    }
+
+    .btn {
+      background: #fff;
+      color: #000;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #ddd;
+    }
+
+    /* Card themes */
+    .silver {
+      background: linear-gradient(135deg, #c0c0c0, #dcdcdc);
+      color: #000;
+    }
+
+    .gold {
+      background: linear-gradient(135deg, #ffd700, #ffec8b);
+      color: #000;
+    }
+
+    .platinum {
+      background: linear-gradient(135deg, #e5e4e2, #ffffff);
+      color: #000;
+    }
+
+    .lifetime {
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      border: 2px solid #00ffe7;
+    }
+
+    .lifetime .card-title {
+      color: #00ffe7;
+    }
+
+    .lifetime .btn {
+      background: #00ffe7;
+      color: #000;
+    }
+
+    footer {
+      background-color: #000;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    @media (max-width: 768px) {
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Keanu Reeves Fan Membership</h1>
+    <p>Choose your level of dedication and unlock exclusive rewards and lifetime access to Keanu experiences.</p>
+  </header>
+
+  <section class="card-container">
+    <div class="membership-card silver">
+      <div class="card-title">Silver Member</div>
+      <p>Access to monthly fan Q&As and digital wallpapers.</p>
+      <div class="price">$2,000</div>
+      <button class="btn">Join Now</button>
+    </div>
+
+    <div class="membership-card gold">
+      <div class="card-title">Gold Member</div>
+      <p>Everything in Silver + early event access and exclusive merch drops.</p>
+      <div class="price">$3,500</div>
+      <button class="btn">Join Now</button>
+    </div>
+
+    <div class="membership-card platinum">
+      <div class="card-title">Platinum Member</div>
+      <p>Everything in Gold + signed memorabilia and virtual meet-ups.</p>
+      <div class="price">$5,000</div>
+      <button class="btn">Join Now</button>
+    </div>
+
+    <div class="membership-card lifetime">
+      <div class="card-title">Lifetime Member</div>
+      <p>All benefits unlocked forever. VIP access, exclusive dinners, and behind-the-scenes.</p>
+      <div class="price">$10,000</div>
+      <button class="btn">Become Legendary</button>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Keanu Nation. Designed with passion by fans for fans.
+  </footer>
+
+</body>
+</html>
