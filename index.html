@@ -6,16 +6,34 @@
   <title>Keanu Reeves Fan Club</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background-color: #0c0c0c;
       font-family: 'Roboto', sans-serif;
       color: #fff;
+    }
+
+    #fan-marquee {
+      background: #000;
+      color: #00ffe7;
+      overflow: hidden;
+      white-space: nowrap;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.6rem 0;
+      border-top: 2px solid #00ffe7;
+      border-bottom: 2px solid #00ffe7;
+    }
+
+    #marquee-content {
+      display: inline-block;
+      animation: scroll 25s linear infinite;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
 
     header {
@@ -79,13 +97,14 @@
       cursor: pointer;
       font-weight: bold;
       transition: background 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
     }
 
     .btn:hover {
       background: #ddd;
     }
 
-    /* Card themes */
     .silver {
       background: linear-gradient(135deg, #c0c0c0, #dcdcdc);
       color: #000;
@@ -133,6 +152,11 @@
 </head>
 <body>
 
+  <!-- 🔥 Scrolling Registration Marquee -->
+  <div id="fan-marquee">
+    <div id="marquee-content"></div>
+  </div>
+
   <header>
     <h1>Keanu Reeves Fan Membership</h1>
     <p>Choose your level of dedication and unlock exclusive rewards and lifetime access to Keanu experiences.</p>
@@ -143,34 +167,67 @@
       <div class="card-title">Silver Member</div>
       <p>Access to monthly fan Q&As and digital wallpapers.</p>
       <div class="price">$2,000</div>
-      <button class="btn">Join Now</button>
+      <a class="btn" href="https://t.me/m/pJTySXiuMGI0" target="_blank">Join Now</a>
     </div>
 
     <div class="membership-card gold">
       <div class="card-title">Gold Member</div>
       <p>Everything in Silver + early event access and exclusive merch drops.</p>
       <div class="price">$3,500</div>
-      <button class="btn">Join Now</button>
+      <a class="btn" href="https://t.me/m/7aR805yRNzI0" target="_blank">Join Now</a>
     </div>
 
     <div class="membership-card platinum">
       <div class="card-title">Platinum Member</div>
       <p>Everything in Gold + signed memorabilia and virtual meet-ups.</p>
       <div class="price">$5,000</div>
-      <button class="btn">Join Now</button>
+      <a class="btn" href="https://t.me/m/VUNuYa6jNThk" target="_blank">Join Now</a>
     </div>
 
     <div class="membership-card lifetime">
       <div class="card-title">Lifetime Member</div>
       <p>All benefits unlocked forever. VIP access, exclusive dinners, and behind-the-scenes.</p>
       <div class="price">$10,000</div>
-      <button class="btn">Become Legendary</button>
+      <a class="btn" href="https://t.me/m/D9fKtpTvZGNk" target="_blank">Become Legendary</a>
     </div>
   </section>
 
   <footer>
     © 2025 Keanu Nation. Designed with passion by fans for fans.
   </footer>
+
+  <script>
+    const levels = ["Silver", "Gold", "Platinum", "Lifetime"];
+    const marquee = document.getElementById("marquee-content");
+
+    const names = [
+      "Jasmine L.", "Marco R.", "Amara K.", "Leo M.", "Grace T.", "Omar S.",
+      "Zoe D.", "Theo J.", "Kira B.", "Devon N.", "Hassan E.", "Nina W.",
+      "Elena V.", "Ryan B.", "Amina C.", "Max T.", "Tariq H.", "Isla G."
+    ];
+
+    function randomLevel() {
+      const weighted = ["Silver", "Gold", "Platinum", "Lifetime", "Lifetime"];
+      return weighted[Math.floor(Math.random() * weighted.length)];
+    }
+
+    function randomName() {
+      return names[Math.floor(Math.random() * names.length)];
+    }
+
+    function addFanRegistration() {
+      const name = randomName();
+      const level = randomLevel();
+      const entry = `🎉 ${name} just joined as a ${level} Member! &nbsp;&nbsp;&nbsp;`;
+      marquee.innerHTML += entry;
+    }
+
+    for (let i = 0; i < 10; i++) {
+      addFanRegistration();
+    }
+
+    setInterval(addFanRegistration, 6000);
+  </script>
 
 </body>
 </html>
